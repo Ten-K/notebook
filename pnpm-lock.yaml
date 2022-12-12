@@ -3,20 +3,20 @@ lockfileVersion: 5.4
 specifiers:
   fighting-design: 0.8.0-alpha.5
   markdown-it: ^13.0.1
-  sass: ^1.56.1
+  sass: ^1.56.2
   vite: ^3.2.5
   vitepress: 1.0.0-alpha.27
   vue: ^3.2.45
 
 dependencies:
   markdown-it: 13.0.1
-  vitepress: 1.0.0-alpha.27_sass@1.56.1
+  vitepress: 1.0.0-alpha.27_sass@1.56.2
   vue: 3.2.45
 
 devDependencies:
   fighting-design: 0.8.0-alpha.5
-  sass: 1.56.1
-  vite: 3.2.5_sass@1.56.1
+  sass: 1.56.2
+  vite: 3.2.5_sass@1.56.2
 
 packages:
 
@@ -222,7 +222,7 @@ packages:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.2.5_sass@1.56.1
+      vite: 3.2.5_sass@1.56.2
       vue: 3.2.45
     dev: false
 
@@ -253,7 +253,7 @@ packages:
       '@vue/shared': 3.2.45
       estree-walker: 2.0.2
       magic-string: 0.25.9
-      postcss: 8.4.19
+      postcss: 8.4.20
       source-map: 0.6.1
     dev: false
 
@@ -708,8 +708,8 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
-  /postcss/8.4.19:
-    resolution: {integrity: sha512-h+pbPsyhlYj6N2ozBmHhHrs9DzGmbaarbLvWipMRO7RLS+v4onj26MPFXA5OBYFxyqYhUJK456SwDcY9H2/zsA==}
+  /postcss/8.4.20:
+    resolution: {integrity: sha512-6Q04AXR1212bXr5fh03u8aAwbLxAQNGQ/Q1LNa0VfOI06ZAlhPHtQvE4OIdpj4kLThXilalPnmDSOD65DcHt+g==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.4
@@ -741,8 +741,8 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /sass/1.56.1:
-    resolution: {integrity: sha512-VpEyKpyBPCxE7qGDtOcdJ6fFbcpOM+Emu7uZLxVrkX8KVU/Dp5UF7WLvzqRuUhB6mqqQt1xffLoG+AndxTZrCQ==}
+  /sass/1.56.2:
+    resolution: {integrity: sha512-ciEJhnyCRwzlBCB+h5cCPM6ie/6f8HrhZMQOf5vlU60Y1bI1rx5Zb0vlDZvaycHsg/MqFfF1Eq2eokAa32iw8w==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -791,7 +791,7 @@ packages:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
     dev: false
 
-  /vite/3.2.5_sass@1.56.1:
+  /vite/3.2.5_sass@1.56.2:
     resolution: {integrity: sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -817,14 +817,14 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.15.18
-      postcss: 8.4.19
+      postcss: 8.4.20
       resolve: 1.22.1
       rollup: 2.79.1
-      sass: 1.56.1
+      sass: 1.56.2
     optionalDependencies:
       fsevents: 2.3.2
 
-  /vitepress/1.0.0-alpha.27_sass@1.56.1:
+  /vitepress/1.0.0-alpha.27_sass@1.56.2:
     resolution: {integrity: sha512-7/PwlIRZANvB2uyi8oi4oMXuH84g2/pAaoymb+ObBCs60m0oVxKMPO28w7R/svqSnnE+bNDOuLzTCXt7gn513g==}
     hasBin: true
     dependencies:
@@ -835,7 +835,7 @@ packages:
       '@vueuse/core': 9.6.0_vue@3.2.45
       body-scroll-lock: 4.0.0-beta.0
       shiki: 0.11.1
-      vite: 3.2.5_sass@1.56.1
+      vite: 3.2.5_sass@1.56.2
       vue: 3.2.45
     transitivePeerDependencies:
       - '@algolia/client-search'

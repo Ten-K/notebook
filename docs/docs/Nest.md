@@ -28,7 +28,7 @@ nest new project-name
 npm run start:dev # 热更新启动
 ```
 
-启动项目后，默认端口为`src/main.ts`文件中定义的端口号，即<http://localhost:3000>
+启动项目后，默认端口为`src/main.ts`文件中定义的端口号，即`http://localhost:3000`
 
 ## 控制器
 
