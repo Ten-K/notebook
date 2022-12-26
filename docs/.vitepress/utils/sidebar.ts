@@ -44,6 +44,12 @@ export const sidebar = {
 			collapsible: true,
 			link: '/docs/Nest',
 			items: [{ text: 'Nest', link: '/docs/Nest' }]
+		},
+		{
+			text: '其他',
+			collapsible: true,
+			link: '/docs/NpmHost',
+			items: [{ text: '搭建npm私服', link: '/docs/NpmHost' }]
 		}
 	]
 }
