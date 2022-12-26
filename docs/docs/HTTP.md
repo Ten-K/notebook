@@ -24,8 +24,6 @@ http报文头分为四类：通用报文头、请求报文头、响应报文头�
 
   ![image.png](https://cdn.nlark.com/yuque/0/2020/png/1535451/1607672550785-4108fbe4-4cde-4129-b089-f811747b0fce.png#averageHue=%23eaf0ed&crop=0&crop=0&crop=1&crop=1&height=314&id=QNte4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=850&originWidth=1696&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1101426&status=done&style=shadow&title=&width=626)
 
----
-
 ## 三. 请求方法
 
 幂等：不管进行多少次重复的操作，都是实现相同的情况。
@@ -37,16 +35,12 @@ http报文头分为四类：通用报文头、请求报文头、响应报文头�
 5. DELETE：删除资源。
 6. OPTIONS：查询请求url支持的请求方法。
 
----
-
 ## 四. 状态码
 
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/1535451/1607675021632-d457f391-8c12-4c7b-972a-77f50c9f7ce7.png#averageHue=%23dae1e0&crop=0&crop=0&crop=1&crop=1&height=341&id=dQy8V&margin=%5Bobject%20Object%5D&name=image.png&originHeight=682&originWidth=2342&originalType=binary&ratio=1&rotation=0&showTitle=false&size=952758&status=done&style=shadow&title=&width=1171)
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/1535451/1607675122414-c3097202-d453-4936-ad6e-cde458a174ec.png#averageHue=%23d9dfde&crop=0&crop=0&crop=1&crop=1&height=450&id=GXDPm&margin=%5Bobject%20Object%5D&name=image.png&originHeight=900&originWidth=2072&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1284369&status=done&style=shadow&title=&width=1036)
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/1535451/1607675217645-768817aa-4e36-4eed-85f2-f7f0d7fc2222.png#averageHue=%23dce2e1&crop=0&crop=0&crop=1&crop=1&height=474&id=zbzMe&margin=%5Bobject%20Object%5D&name=image.png&originHeight=948&originWidth=2071&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1329030&status=done&style=shadow&title=&width=1036)
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/1535451/1607675294179-f069274d-a71e-4df4-84ad-4fdf1d0c7c4a.png#averageHue=%23e2e8e6&crop=0&crop=0&crop=1&crop=1&height=409&id=Xbehu&margin=%5Bobject%20Object%5D&name=image.png&originHeight=817&originWidth=2069&originalType=binary&ratio=1&rotation=0&showTitle=false&size=763246&status=done&style=shadow&title=&width=1034.5)
-
----
 
 ## 五. 状态管理：Cookie与Session
 
@@ -63,14 +57,12 @@ http报文头分为四类：通用报文头、请求报文头、响应报文头�
 
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/1535451/1607676979798-28f6ae04-f376-415d-a2c0-47db5f2be7d1.png#averageHue=%23eef3ef&crop=0&crop=0&crop=1&crop=1&height=615&id=GhGil&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1230&originWidth=2026&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1273539&status=done&style=shadow&title=&width=1013)
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/1535451/1607677033782-03790305-9bf0-467e-b1d4-bf481de4ad55.png#averageHue=%23eaefeb&crop=0&crop=0&crop=1&crop=1&height=221&id=vweAn&margin=%5Bobject%20Object%5D&name=image.png&originHeight=441&originWidth=2192&originalType=binary&ratio=1&rotation=0&showTitle=false&size=490376&status=done&style=shadow&title=&width=1096)
-
 2. 协商缓存
 
 - Last-Modified只精确到秒，如果在1秒内修改文件无法感知
 
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/1535451/1607677083588-1a952526-b0d8-4ecf-8f2d-364ba542645a.png#averageHue=%23ebf0ec&crop=0&crop=0&crop=1&crop=1&height=401&id=wYzIM&margin=%5Bobject%20Object%5D&name=image.png&originHeight=802&originWidth=1949&originalType=binary&ratio=1&rotation=0&showTitle=false&size=752441&status=done&style=shadow&title=&width=974.5)
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/1535451/1607677110940-a364d535-118c-44aa-a189-33761ef9a71d.png#averageHue=%23ecf1ed&crop=0&crop=0&crop=1&crop=1&height=388&id=gM3jz&margin=%5Bobject%20Object%5D&name=image.png&originHeight=776&originWidth=2162&originalType=binary&ratio=1&rotation=0&showTitle=false&size=799276&status=done&style=shadow&title=&width=1081)
-
 3. 缓存改进方案：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/1535451/1607677519618-98de69d3-8e93-4344-86a5-9cddcf622f9f.png#averageHue=%23e4e9e6&crop=0&crop=0&crop=1&crop=1&height=484&id=bjldz&margin=%5Bobject%20Object%5D&name=image.png&originHeight=967&originWidth=2182&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1331198&status=done&style=shadow&title=&width=1091)
