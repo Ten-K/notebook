@@ -40,7 +40,7 @@ export const sidebar = {
 			items: [{ text: 'HTTP', link: '/docs/HTTP' }]
 		},
 		{
-			text: '服务器相关',
+			text: '后端相关',
 			collapsible: true,
 			link: '/docs/Nest',
 			items: [{ text: 'Nest', link: '/docs/Nest' }]
@@ -49,7 +49,10 @@ export const sidebar = {
 			text: '其他',
 			collapsible: true,
 			link: '/docs/NpmHost',
-			items: [{ text: '搭建npm私服', link: '/docs/NpmHost' }]
+			items: [
+				{ text: '搭建npm私服', link: '/docs/NpmHost' },
+				{ text: 'Shell脚本', link: '/docs/Shell' }
+			]
 		}
 	]
 }
