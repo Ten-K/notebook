@@ -3,9 +3,6 @@
 # 一键提交代码
 # 使用方法 ./push.sh "提交信息"
 
-echo "=== 正在拉取最新代码 ==="
-git pull origin main
-
 git add .
 
 # 读取命令行的第一个参数-commit信息
@@ -13,7 +10,7 @@ msg="$1"
 
 # 判断第一个参数是否存在，不存在，填入默认信息
 if [ ! -n "$msg" ]; then
-  author=$(git config user.name)
+  author = $(git config user.name)
   msg = "git commit by $author"
 fi
 
