@@ -16,7 +16,7 @@ git pull origin master
 
 git add .
 
-# 读取命令行的第一个参数-commit信息
+# 读取命令行的第一个参数-commit信息，等号两边不能有空格，如：msg = "$1"
 msg="$1"
 
 # 判断第一个参数是否存在，不存在，填入默认信息
