@@ -83,7 +83,8 @@ tar xf nexus-3.43.0-01-unix.tar.gz
 
 脚本中的`download-tgz package-json package.json`最好改为`download-tgz package-lock package-lock.json`，否则可能出现依赖丢失的问题。
 
-如果 **[node-tgz-downloader](https://github.com/Meir017/node-tgz-downloader)** 下载离线包总是失败可以试试 **[get-npm-tgz](https://github.com/Ten-K/get-npm-tgz)**
+如果 **[node-tgz-downloader](https://github.com/Meir017/node-tgz-downloader)** 下载离线包失败，
+可以换成 **[get-npm-tgz](https://github.com/Ten-K/get-npm-tgz)**
 
 :::
 
