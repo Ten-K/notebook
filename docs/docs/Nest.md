@@ -49,7 +49,7 @@ export class UserController {
 
   @Get()
   findAll(@Query() query: string) {
-    return `访问了/user/${query.id}`;
+    return `访问了/user?${query.id}`;
   }
 
   @Get(':id') // 动态路由
@@ -59,14 +59,16 @@ export class UserController {
 }
 ```
 
-访问`/user?id=1`，则会触发第一个get方法，返回`访问了/user/1`。
+访问`/user?id=1`，则会触发第一个get方法，返回`访问了/user?1`。
 访问`/user/2`，则会触发第二个get方法，返回`访问了/user/2`。
 
 **`nest`提供了大量的装饰器提供开发者使用，这里列举常用的几个：**
 
-1. `@Param`：用于获取`params`参数（动态的路由的参数）
+1. `@Body`：用于获取`Body`参数（`post`请求参数）
 2. `@Query`：用于获取`Query`参数（以问号的形式拼接在访问地址上的参数）
-3. `@Body`：用于获取`Body`参数（`post`请求参数）
+3. `@Param`：用于获取`params`参数（动态的路由的参数）。
+
+以上装饰器都可接收一个参数，相当于从获取的参数对象（`Body`、`Query`、`params`）中解构某个参数
 
 ## 模块
 

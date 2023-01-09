@@ -24,15 +24,16 @@ if [ ! -n "$msg" ]; then
   msg="git commit by $author"
 fi
 
+echo "=== 提交信息 ==="
 git commit -m "${msg}"
 
 echo "=== 正在拉取最新代码 ==="
-# master 换成自己想拉取的远程分支
-git pull origin master
+# main 换成自己想拉取的远程分支
+git pull origin main
 
 echo "=== 正在推送 ==="
-# master 换成自己想推送的远程分支
-git push origin master
+# main 换成自己想推送的远程分支
+git push origin main
 echo "=== 推送成功 ==="
 
 # 阻止Shell脚本自动退出
@@ -40,6 +41,12 @@ echo "按任意键继续"
 read -n 1
 echo "继续运行"
 
+```
+
+**windows** 下执行
+
+```bash
+  ./push.sh "提交信息"
 ```
 
 `#!` 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 Shell。
