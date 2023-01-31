@@ -54,5 +54,11 @@ export const sidebar = {
 				{ text: 'Shell脚本', link: '/docs/Shell' }
 			]
 		}
+	],
+	'/diary/': [
+		{
+			text: '随笔',
+			items: [{ text: '2023/01/31', link: '/diary/20230131' }]
+		}
 	]
 }

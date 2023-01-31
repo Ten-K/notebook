@@ -8,7 +8,7 @@ import { mdPlugin } from './config/plugins'
  */
 
 const config = defineConfig({
-  title: '往者不可谏，来者犹可追',
+  title: '一万随手记',
   lastUpdated: true,
 
   themeConfig: {

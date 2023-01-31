@@ -7,5 +7,10 @@ export const nav = [
     text: '文档',
     activeMatch: '/docs/',
     link: '/docs/HTML'
+  },
+  {
+    text: '随笔',
+    activeMatch: '/diary/',
+    link: '/diary/20230131'
   }
 ]
