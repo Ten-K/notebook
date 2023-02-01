@@ -48,17 +48,21 @@ export const sidebar = {
 		{
 			text: '其他',
 			collapsible: true,
-			link: '/docs/NpmHost',
-			items: [
-				{ text: '搭建npm私服', link: '/docs/NpmHost' },
-				{ text: 'Shell脚本', link: '/docs/Shell' }
-			]
+			link: '/docs/Shell',
+			items: [{ text: 'Shell脚本', link: '/docs/Shell' }]
 		}
 	],
-	'/diary/': [
+	'/article/': [
 		{
-			text: '随笔',
-			items: [{ text: '2023/01/31', link: '/diary/20230131' }]
+			text: '年度归档',
+			collapsible: true,
+			items: [{ text: '2023', link: '/article/archives/2023' }]
+		},
+		{
+			text: '我的文章',
+			collapsible: true,
+			link: '/article/article/搭建npm私服',
+			items: [{ text: '搭建npm私服', link: '/article/article/搭建npm私服' }]
 		}
 	]
 }

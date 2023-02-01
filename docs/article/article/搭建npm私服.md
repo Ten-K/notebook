@@ -1,4 +1,4 @@
-# Linux安装nexus搭建npm私服
+# Linux安装Nexus搭建Npm私服
 
 ## 1.下载安装
 
@@ -30,7 +30,7 @@ tar xf nexus-3.43.0-01-unix.tar.gz
 
 第一次登录后会提示重置密码
 
-## 3.创建npm仓库
+## 3.创建Npm仓库
 
 点击在左侧菜单**Repositories**，可以看到仓库类型列表，如下：
 
@@ -38,7 +38,7 @@ tar xf nexus-3.43.0-01-unix.tar.gz
 
 点击`Create repository`按钮., 增加 **npm(hosted)** 输入 **Name: npm-hosted** 用于存放自己的私有包
 
-## 4.发布npm包到私服
+## 4.发布Npm包到私服
 
 1. 添加权限认证，设置权限, Realms 菜单, 将 npm Bearer Token Realm 添加到右边
 
@@ -90,11 +90,11 @@ tar xf nexus-3.43.0-01-unix.tar.gz
 
 在下载npm离线包（tgz）时，可能会下载失败，需要多试几次。如果还是不行，就用手动导入。
 
-npm离线包下载地址示例：<https://registry.npmmirror.com/axios/download/axios-0.18.1.tgz>
+npm离线包下载地址示例：<https://registry.npmmirror.com/axios/-/axios-0.18.1.tgz>
 
 直接在地址栏输入示例地址，包名和版本号替换成自己需要的包
 
-**`nexus`离线包的坑：**
+## 6. Nexus离线包的坑
 
 **package-lock.json** 文件:
 
@@ -102,6 +102,6 @@ npm离线包下载地址示例：<https://registry.npmmirror.com/axios/download/
 
 如上图所示的情况，可能会在 **npm i** 时报找不到 **@ampproject/remapping** 的依赖。下载地址要改为
 
-> <https://registry.npmmirror.com/@ampproject/remapping/download/@ampproject/remapping-2.2.0.tgz>
+> <https://registry.npmmirror.com/@ampproject/remapping/-/@ampproject/remapping-2.2.0.tgz>
 
 因为不加上 **@ampproject** ，`nexus`中的npm-host仓库就不会把remapping包归类到 **@ampproject** 文件夹下，下载时路径会出错

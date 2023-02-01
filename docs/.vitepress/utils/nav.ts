@@ -10,7 +10,7 @@ export const nav = [
   },
   {
     text: '随笔',
-    activeMatch: '/diary/',
-    link: '/diary/20230131'
+    activeMatch: '/article/',
+    link: '/article/archives/2023'
   }
 ]
