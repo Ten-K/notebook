@@ -50,6 +50,12 @@ export const sidebar = {
 			collapsible: true,
 			link: '/docs/Shell',
 			items: [{ text: 'Shell脚本', link: '/docs/Shell' }]
+		},
+		{
+			text: '面试准备',
+			collapsible: true,
+			link: '/docs/面试准备/高频手写题',
+			items: [{ text: '高频手写题', link: '/docs/面试准备/高频手写题' }]
 		}
 	],
 	'/article/': [
