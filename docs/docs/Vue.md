@@ -83,17 +83,17 @@ vite官网：<https://vitejs.cn>
     - 真正的按需编译，不再等待整个应用编译完成。
 - 传统构建 与 vite构建对比图
 
-<img src="https://cn.vitejs.dev/assets/bundler.37740380.png" style="width:500px;height:280px;float:left" /><img src="https://cn.vitejs.dev/assets/esm.3070012d.png" style="width:480px;height:280px" />
+<img src="/images/bundle.svg" style="width:500px;height:280px;float:left" /><img src="/images/esm.svg" style="width:480px;height:280px" />
 
 ```bash
 ## 创建工程
-npm init vite-app <project-name>
+pnpm create vite <project-name> --template vue
 ## 进入工程目录
 cd <project-name>
 ## 安装依赖
-npm install
+pnpm install
 ## 运行
-npm run dev
+pnpm run dev
 ```
 
 # 二、常用 Composition API
@@ -470,10 +470,10 @@ npm run dev
 我们可以更加优雅的组织我们的代码，函数。让相关功能的代码更加有序的组织在一起。
 
 <div style="width:500px;height:340px;overflow:hidden;float:left">
-    <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc0be8211fc54b6c941c036791ba4efe~tplv-k3u1fbpfcp-watermark.image"style="height:360px"/>
+    <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc0be8211fc54b6c941c036791ba4efe~tplv-k3u1fbpfcp-watermark.image" style="height:360px"/>
 </div>
 <div style="width:430px;height:340px;overflow:hidden;float:left">
-    <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6cc55165c0e34069a75fe36f8712eb80~tplv-k3u1fbpfcp-watermark.image"style="height:360px"/>
+    <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6cc55165c0e34069a75fe36f8712eb80~tplv-k3u1fbpfcp-watermark.image" style="height:360px"/>
 </div>
 
 # 五、新的组件
