@@ -9,11 +9,11 @@
   "dependencies": {
     "markdown-it": "^13.0.1",
     "vitepress": "1.0.0-alpha.27",
-    "vue": "^3.2.45"
+    "vue": "^3.2.47"
   },
   "devDependencies": {
     "fighting-design": "0.8.0-alpha.5",
-    "sass": "^1.56.2",
+    "sass": "^1.58.1",
     "vite": "^3.2.5"
   }
 }
