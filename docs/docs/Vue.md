@@ -519,7 +519,7 @@ pnpm run dev
     - 异步引入组件
 
     ```js
-    import {defineAsyncComponent} from 'vue'
+    import { defineAsyncComponent } from 'vue'
     const Child = defineAsyncComponent(()=>import('./components/Child.vue'))
     ```
 
@@ -531,7 +531,7 @@ pnpm run dev
     		<h3>我是App组件</h3>
     		<Suspense>
     			<template v-slot:default>
-    				<Child/>
+    				<Child />
     			</template>
     			<template v-slot:fallback>
     				<h3>加载中.....</h3>
@@ -559,8 +559,9 @@ pnpm run dev
     
     //注册全局指令
     Vue.directive('focus', {
-      inserted: el => el.focus()
-    }
+        inserted: el => el.focus()
+      }
+    )
     ```
 
 - Vue3.0中对这些API做出了调整：
