@@ -1,10 +1,12 @@
 # Linux安装Nexus搭建Npm私服
 
+> 此文章用于搭建内网npm私有库，内网无法穿透外网的情况
+
 ## 1.下载安装
 
 [nexus下载地址](https://help.sonatype.com/repomanager3/product-information/download/download-archives---repository-manager-3)
 
-![下载图片指引](https://img-blog.csdnimg.cn/4a895fde45114c57a7bc2b85801a457a.png)
+![下载图片指引](https://i.imgtg.com/2023/03/07/YZhMx.png)
 
 将下载的tar.gz文件上传至服务器，然后解压文件
 
@@ -32,24 +34,24 @@ tar xf nexus-3.43.0-01-unix.tar.gz
 
 ## 3.创建Npm仓库
 
-点击在左侧菜单**Repositories**，可以看到仓库类型列表，如下：
+点击在左侧菜单**Repositories**，点击`Create repository`按钮，可以看到仓库类型列表，如下：
 
-![image1](https://cdn.jsdelivr.net/gh/Ten-K/picgo/img/20221226183200.png)
+![image1](https://i.imgtg.com/2023/03/07/YZz0t.png)
 
-点击`Create repository`按钮., 增加 **npm(hosted)** 输入 **Name: npm-hosted** 用于存放自己的私有包
+选择 **npm(hosted)** 仓库类型， 输入 **Name: npm-hosted** 用于存放自己的私有包。其余两种npm仓库类型自行了解
 
 ## 4.发布Npm包到私服
 
-1. 添加权限认证，设置权限, Realms 菜单, 将 npm Bearer Token Realm 添加到右边
+1. 添加权限认证，设置权限，点击 **Realms** 菜单， 将 `npm Bearer Token Realm` 添加到右边
 
-2. 创建nx-deploy角色，给角色赋于一个nx-repository-view-*-*-*权限
-  ![image2](https://cdn.jsdelivr.net/gh/Ten-K/picgo/img/05102157_62c3a045bfb2a78733.png)
+2. 点击 **Roles** 菜单， 创建 `nx-deploy` 角色，给角色赋于一个 `nx-repository-view-*-*-*` 权限
+  ![image2](https://i.imgtg.com/2023/03/07/YZkBi.webp)
 
-3. 创建deployer 用户,密码也为 deployer,同时设定角色为nx-deploy
-  ![image3](https://cdn.jsdelivr.net/gh/Ten-K/picgo/img/05102157_62c3a045d8a6247461.png)
+3. 点击 **Users** 菜单，创建 `deployer` 用户,密码也为 `deployer`,同时设定角色为 `nx-deploy`
+  ![image3](https://i.imgtg.com/2023/03/07/YZWfL.webp)
 
-4. 客户端的.npmrc配置
-   _auth是 username:password 的base64值，这样设置的好处是publish时就不用login了。
+4. 客户端的 `.npmrc` 配置
+   `_auth` 是 `username:password` 的base64值，这样设置的好处是publish时就不用login了。
 
    在你的服务器执行`echo -n 'admin:admin123' | openssl base64`即可生成对应的base64。其中的`admin:admin123`为你的nexus的`登录用户:密码`
 
@@ -77,7 +79,7 @@ tar xf nexus-3.43.0-01-unix.tar.gz
 
 ## 5. 批量上传本地依赖
 
-请参考<https://blog.csdn.net/u011716769/article/details/126036757>。只能说sh脚本🐂。
+请参考<https://blog.csdn.net/u011716769/article/details/126036757>。只能说shell脚本🐂。
 
 ::: info 提示
 
@@ -98,7 +100,7 @@ npm离线包下载地址示例：<https://registry.npmmirror.com/axios/-/axios-0
 
 **package-lock.json** 文件:
 
-![image-20221223154218025](https://cdn.jsdelivr.net/gh/Ten-K/picgo/img/image-20221223154218025.png)
+![image-20221223154218025](https://i.imgtg.com/2023/03/07/YZxKX.png)
 
 如上图所示的情况，可能会在 **npm i** 时报找不到 **@ampproject/remapping** 的依赖。下载地址要改为
 
