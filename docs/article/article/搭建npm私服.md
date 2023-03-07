@@ -1,4 +1,4 @@
-# Linux安装Nexus搭建Npm私服
+# Linux安装Nexus3搭建Npm私服
 
 > 此文章用于搭建内网npm私有库，内网无法穿透外网的情况
 
