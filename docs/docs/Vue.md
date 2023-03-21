@@ -13,8 +13,12 @@
 ### 1.性能的提升
 
 - 打包大小减少41%
+  1. 移除一些冷门feature（过滤器 (filter), 内联模板 attribute等）
+  2. 引入tree-shaking的技术
 
 - 初次渲染快55%, 更新渲染快133%
+  1. block tree diff计算时跳过静态节点
+  2. cachHandle 缓存
 
 - 内存减少54%
 

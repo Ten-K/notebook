@@ -25,9 +25,9 @@ fi
 echo "=== commit信息: $msg ==="
 git commit -m "${msg}"
 
-echo "=== 正在拉取最新代码 ==="
+# echo "=== 正在拉取最新代码 ==="
 # main 换成自己想拉取的远程分支
-git pull origin main
+# git pull origin main
 
 echo "=== 正在推送 ==="
 # main 换成自己想推送的远程分支
