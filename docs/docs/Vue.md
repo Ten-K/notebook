@@ -10,51 +10,34 @@
 
 ## Vue3带来了什么
 
-### 1.性能的提升
+1. 打包体积更小。移除了一些不常用的API，引入tree-shaking机制，可以将无用模块剪切，只打包需要的模块，使得打包的体积整体变小。
 
-- 打包大小减少41%
-  1. 移除一些冷门feature（过滤器 (filter), 内联模板 attribute等）
-  2. 引入tree-shaking的技术
+2. 速度更快。
 
-- 初次渲染快55%, 更新渲染快133%
-  1. block tree diff计算时跳过静态节点
-  2. cachHandle 缓存
+   - diff算法优化
+   - 静态提升
+   - 事件监听缓存
+   - SSR优化
 
-- 内存减少54%
+3. 更灵活的代码组织能力。vue3在兼顾vue2的 options API的基础上，增加了composition API，大大增加了代码的逻辑组织和代码复用能力，并且vue3使用typescript开发，可以获得更好的类型提示体验
 
-  ......
+4. 使用Proxy代替defineProperty实现响应式
 
-### 2.源码的升级
-
-- 使用Proxy代替defineProperty实现响应式
-
-- 重写虚拟DOM的实现和Tree-Shaking
-
-  ......
-
-### 3.拥抱TypeScript
-
-- Vue3可以更好的支持TypeScript
-
-### 4.新的特性
-
-1. Composition API（组合API）
-
+5. Composition API（组合API）
    - setup配置
    - ref与reactive
    - watch与watchEffect
    - provide与inject
-   - ......
-2. 新的内置组件
+
+6. 新的内置组件
    - Fragment
    - Teleport
    - Suspense
-3. 其他改变
 
+7. 其他改变
    - 新的生命周期钩子
    - data 选项应始终被声明为一个函数
    - 移除keyCode支持作为 v-on 的修饰符
-   - ......
 
 ## 创建Vue3.0工程
 
