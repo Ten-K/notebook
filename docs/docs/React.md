@@ -1,4 +1,4 @@
-# 基础HOOKS
+# 基础Hooks
 
 ## useState状态钩子
 
@@ -19,6 +19,11 @@ export default function App() {
   );
 }
 ```
+
+- **特点：**
+  1. 异步更新
+  2. 合并后更新
+  3. 不可变数据(解决方案：[immer](https://immerjs.github.io/immer/zh-CN/))
 
 ## useContext共享钩子
 
@@ -68,13 +73,14 @@ function ThemedButton() {
 > effect 的执行时机
 > 与 componentDidMount、componentDidUpdate 不同的是，在浏览器渲染完成后执行，传给 useEffect 的函数会延迟调用。这使得它适用于许多常见的副作用场景，比如设置订阅和事件处理等情况，因此不应在函数中执行阻塞浏览器更新屏幕的操作。
 > 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。
+> 返回一个函数用于组件销毁时执行
 
 ```javascript
 useEffect(
   () => {
     const subscription = props.source.subscribe();
     return () => {
-      subscription.unsubscribe();
+      subscription.unsubscribe(); // 取消订阅
     };
   },
   [props.source],
@@ -136,20 +142,22 @@ const memoizedCallback = useCallback(
 
 ## useMemo
 
-- 用于数据缓存
+函数组件，每次state更新都会重新执行函数。使用 `useMemo` 可以缓存数据。不用每次执行函数都重新生成，可用于计算量较大的场景，缓存提高性能。
+
+- 用于缓存数据
 - 返回一个 [memoized](https://en.wikipedia.org/wiki/Memoization) 值。
 
 ```javascript
-const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+const memoizedValue = useMemo(() => a + b, [a, b]);
 ```
 
 ## useRef
 
-- 用来获取元素对象
+- 用来获取真实的DOM元素对象
 - 保存数据
 
 ```javascript
-import React, {useRef} from "react";
+import {useRef} from "react";
 
 function Ref (){
     const box = useRef()
