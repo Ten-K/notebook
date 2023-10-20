@@ -1,6 +1,6 @@
 <script setup>
+import { darkTheme } from "naive-ui";
 import { useDark } from "@pureadmin/utils";
-import { NConfigProvider, NButton, darkTheme, NSpace, NImage } from "naive-ui";
 const { isDark } = useDark();
 </script>
 <template>

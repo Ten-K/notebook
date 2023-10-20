@@ -1,7 +1,11 @@
-import DefaultTheme from 'vitepress/theme'
+import naive from "naive-ui";
+import DefaultTheme from "vitepress/theme";
 
-import './style/index.scss'
+import "./style/index.scss";
 
 export default {
-  ...DefaultTheme
-}
+	...DefaultTheme,
+	enhanceApp({ app }) {
+		app.use(naive);
+	}
+};
