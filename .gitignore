@@ -3,6 +3,7 @@ node_modules
 dist
 dist-ssr
 *.local
+/docs/.vitepress/cache
 
 # Dependencies
 /node_modules

@@ -5,15 +5,20 @@
     "build": "vitepress build docs",
     "serve": "vitepress serve docs"
   },
+  "type": "module",
   "license": "MIT",
-  "dependencies": {
-    "markdown-it": "^13.0.1",
-    "vitepress": "1.0.0-alpha.27",
-    "vue": "^3.2.47"
-  },
   "devDependencies": {
-    "fighting-design": "0.8.0-alpha.5",
-    "sass": "^1.58.1",
-    "vite": "^3.2.5"
-  }
+    "@pureadmin/utils": "^1.9.10",
+    "markdown-it": "^13.0.2",
+    "naive-ui": "^2.35.0",
+    "sass": "^1.69.4",
+    "vite": "^3.2.7",
+    "vitepress": "1.0.0-rc.22",
+    "vue": "^3.3.4"
+  },
+  "engines": {
+    "node": "^18.18.0 || >=20.0.0",
+    "pnpm": ">=8.6.10"
+  },
+  "packageManager": "pnpm@8.9.2"
 }
