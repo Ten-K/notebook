@@ -2,17 +2,27 @@
 
 ## useState状态钩子
 
+### 异步更新
+
 ```javascript
 import React, { useState } from 'react';
 
 export default function App() {
   // 声明一个叫 "count" 的 state 变量
   const [count, setCount] = useState(0);
+  function add() {
+    setCount(count + 1)
+    console.log(count) // 0 修改count值后, count不会立即更新
+  }
+
+  useEffect(()=>{
+    console.log(count); // 1 可结合useEffect获取最新值
+  }, [count])
 
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
+      <button onClick={add}>
         Click me
       </button>
     </div>
@@ -20,10 +30,88 @@ export default function App() {
 }
 ```
 
-- **特点：**
-  1. 异步更新
-  2. 合并后更新
-  3. 不可变数据(解决方案：[immer](https://immerjs.github.io/immer/zh-CN/))
+### 合并后更新
+
+```javascript
+import { useState } from 'react';
+
+export default function App() {
+  // 声明一个叫 "count" 的 state 变量
+  const [count, setCount] = useState(0);
+  function add() {
+    // 连续执行setCount(count + 1), 预期页面count值为3, 但实际count值为1
+    // setCount(count + 1)
+    // setCount(count + 1)
+    // setCount(count + 1)
+
+    // 将setCount的参数改为函数的形式, setCount执行时会将上一次count的最新值作为函数的参数进行传递
+    setCount((prevCount) => prevCount + 1);
+		setCount((prevCount) => prevCount + 1);
+		setCount((prevCount) => prevCount + 1);
+  }
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={add}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+
+### 不可变数据(解决方案：[immer](https://immerjs.github.io/immer/zh-CN/))
+
+如果要更新对象类型的数据，并触发组件的重新渲染。必须使用新对象覆盖旧的对象。因为 `react` 更新时判断对象的引用是否发生改变。
+
+```javascript
+import { useState } from "react";
+
+export default function App() {
+	// 声明一个叫 "count" 的 state 变量
+	const [useInfo, setUseInfo] = useState({
+		name: "jack",
+		age: 18
+	});
+	function changeName() {
+    // 错误写法，直接使用原对象不会触发重新渲染
+		// useInfo.name = "jojo";
+		// setUseInfo(useInfo);
+    
+    // 使用新对象替换 useInfo
+		setUseInfo({...useInfo, name: "jojo"});
+	}
+
+	return (
+		<div>
+			<h1>{useInfo.name}</h1>
+			<h1>{useInfo.age}</h1>
+			<button onClick={changeName}>修改信息</button>
+		</div>
+	);
+}
+```
+
+## useEffect副作用钩子
+
+> effect 的执行时机
+> 与 componentDidMount、componentDidUpdate 不同的是，在浏览器渲染完成后执行，传给 useEffect 的函数会延迟调用。这使得它适用于许多常见的副作用场景，比如设置订阅和事件处理等情况，因此不应在函数中执行阻塞浏览器更新屏幕的操作。
+> 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。
+> 如果完全不传递依赖数组，则 Effect 会在组件的 每次单独渲染（和重新渲染）之后 运行。
+> 返回一个函数用于组件销毁时执行
+
+```javascript
+useEffect(
+  () => {
+    const subscription = props.source.subscribe();
+    return () => {
+      subscription.unsubscribe(); // 取消订阅
+    };
+  },
+  [props.source],
+);
+```
 
 ## useContext共享钩子
 
@@ -39,7 +127,7 @@ const themes = {
   }
 };
 
-const ThemeContext = React.createContext(themes.light);
+const ThemeContext = React.createContext();
 
 function App() {
   return (
@@ -67,27 +155,13 @@ function ThemedButton() {
 }
 ```
 
-## useEffect副作用钩子
-
->
-> effect 的执行时机
-> 与 componentDidMount、componentDidUpdate 不同的是，在浏览器渲染完成后执行，传给 useEffect 的函数会延迟调用。这使得它适用于许多常见的副作用场景，比如设置订阅和事件处理等情况，因此不应在函数中执行阻塞浏览器更新屏幕的操作。
-> 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。
-> 返回一个函数用于组件销毁时执行
-
-```javascript
-useEffect(
-  () => {
-    const subscription = props.source.subscribe();
-    return () => {
-      subscription.unsubscribe(); // 取消订阅
-    };
-  },
-  [props.source],
-);
-```
-
 ## useReducer状态管理钩子
+
+当状态更新逻辑复杂时，可以考虑使用`useReducer`。`useReducer`可以同时更新多个状态，而且能把对状态的修改从组件中独立出来。
+相比于`useState`，`useReducer`可以更好的描述"如何更新状态"。例如: 组件负责发出行为，`useReducer`负责更新状态。
+好处是: 让代码逻辑更清晰，代码行为更易预测。
+
+可借助[use-immer](https://github.com/immerjs/use-immer)简化操作，直接修改原对象，具体操作自行了解。
 
 ```javascript
 const initialState = {count: 0};
@@ -118,7 +192,35 @@ function Counter() {
 
 ## useLayoutEffect
 
-- 在浏览器渲染前执行（用于操作dom）
+| hooks名称 | 执行时机 | 执行过程 |
+| ------ | ----------- | ------ |
+| useEffect | 在浏览器重新绘制屏幕**之后**执行 | 异步执行，不会阻塞浏览器绘制 |
+| useLayoutEffect | 在浏览器重新绘制屏幕**之前**执行 | 同步执行，阻塞浏览器绘制 |
+
+```javascript
+import { useState, useEffect } from "react";
+
+function RandomNum() {
+	const [num, setNum] = useState(Math.random() * 200);
+	useEffect(() => {
+		if (num === 0) {
+			setNum(Math.random() * 100);
+		}
+	}, [num]);
+	return (
+		<>
+			<h3>num的值：{num}</h3>
+			<button onClick={() => setNum(0)}>重置</button>
+		</>
+	);
+}
+
+export default RandomNum;
+
+```
+
+点击重置按钮时，`num`会先渲染成0，然后再渲染成随机数，中间会出现一个闪烁的情况。
+将 `useEffect` 改成 `useLayoutEffect` 就会再0渲染在页面之前修改成随机数，从而杜绝闪烁的情况。
 
 ## useCallback
 
@@ -148,53 +250,84 @@ const memoizedCallback = useCallback(
 - 返回一个 [memoized](https://en.wikipedia.org/wiki/Memoization) 值。
 
 ```javascript
-const memoizedValue = useMemo(() => a + b, [a, b]);
+import { useState, useMemo } from "react";
+
+function MemoTest() {
+	const [count, setCount] = useState(0);
+	const [flag, setFlag] = useState(false);
+
+	const Son = useMemo(() => {
+		console.log("子组件渲染");
+		return flag ? <div>上班累</div> : <div>上班真好</div>;
+	}, [flag]);
+
+	return (
+		<>
+			count: {count}
+			flag:{JSON.stringify(flag)}
+			<button onClick={() => setCount(count + 1)}>+1</button>
+			<button onClick={() => setFlag(!flag)}>flag</button>
+			{Son}
+		</>
+	);
+}
+
+export default MemoTest;
 ```
+
+被`useMemo`包裹的Son值只要`flag`依赖项不改变就不会重新渲染
 
 ## useRef
 
-- 用来获取真实的DOM元素对象
-- 保存数据
+- ref只有首次渲染才会初始化
+- ref.current变化不会引起重新渲染
+
+### 用来获取真实的DOM元素对象
 
 ```javascript
-import {useRef} from "react";
+import { useRef } from "react";
 
-function Ref (){
-    const box = useRef()
+function Ref() {
+	const iptRef = useRef<HTMLInputElement>(null);
+	function getFocus() {
+		iptRef.current?.focus();
+	}
 
-    return (
-        <div>
-            <div ref={box}>useRef</div>
-            <button onClick={() => console.log(box)}>+1</button>
-        </div>
-    )
+	return (
+		<div>
+			<input ref={iptRef}></input>
+			<button onClick={getFocus}>获取input元素</button>
+		</div>
+	);
 }
 export default Ref;
 ```
 
-> 说明一下： 当我们需要获取元素对象的时候， 首先引入useRef， 其次调用useRef（）方法接收它的返回值，我们需要获取那个DOM元素就在那个DOM元素上进行绑定，通过ref属性将useRef的返回值绑定到元素身上，这样useRef的返回值，通过useRef返回一个对象，对象内部有个current属性，这个属性就对应着我们需要的元素对象；
+> 说明一下： 当我们需要获取元素对象的时候， 首先引入useRef， 其次调用useRef()方法接收它的返回值，我们需要获取哪个DOM元素就在哪个DOM元素上进行绑定，通过ref属性将useRef的返回值绑定到元素身上，这样useRef的返回值，通过useRef返回一个对象，对象内部有个current属性，这个属性就对应着我们需要的元素对象；
+
+### 保存数据
 
 ```javascript
-import React, {useRef, useEffect, useState} from "react";
+import { useRef, useEffect, useState } from "react";
 
-function Ref (){
-    let timerId = useRef()
-    const [count, setCount] = useState(0)
-    useEffect(() => {
-        timerId.current = setInterval(() => {
-            setCount(count => count + 1)
-        }, 1000)
-    }, [])
-    const stop = () => {
-        console.log(timerId)
-        clearInterval(timerId.current)
-    }
-    return (
-        <div>
-            <div>{count}</div>
-            <button onClick={stop}>停止</button>
-        </div>
-    )
+function Ref() {
+	const timerId = useRef<NodeJS.Timeout>();
+	const [count, setCount] = useState(0);
+	useEffect(() => {
+		timerId.current = setInterval(() => {
+			setCount((count) => count + 1);
+		}, 1000);
+	}, []);
+	const stop = () => {
+		console.log(timerId);
+		clearInterval(timerId.current);
+	};
+	return (
+		<div>
+			<div>{count}</div>
+			<button onClick={stop}>停止</button>
+		</div>
+	);
 }
 export default Ref;
 ```
@@ -209,7 +342,7 @@ export default Ref;
 import React, { useRef, useImperativeHandle } from 'react';
 import ReactDOM from 'react-dom';
 
-const FancyInput = React.forwardRef((props, ref) => {
+const FancyInput = React.forwardRef((_, ref) => {
   const inputRef = useRef();
   useImperativeHandle(ref, () => ({
     focus: () => {
@@ -235,3 +368,38 @@ const App = props => {
 
 ReactDOM.render(<App />, root);
 ```
+
+## useTransition
+
+[useTransition](https://beta.react.jscn.org/reference/react/useTransition#updating-an-input-in-a-transition-doesnt-work) 是一个帮助你在不阻塞 UI 的情况下更新状态的 React Hook。将正在渲染的更新标记为低优先级，优先渲染用户的操作。
+
+## useDeferredValue
+
+[useDeferredValue](https://beta.react.jscn.org/reference/react/useDeferredValue) 是一个 React Hook，可以让你延迟更新 UI 的某些部分。
+
+```javascript
+import React, { useState, useDeferredValue } from "react";
+
+const Defer = () => {
+	const [kw, setKw] = useState("");
+	const deferredKw = useDeferredValue(kw);
+	return (
+		<>
+			<input type="text" value={kw} onChange={(e) => setKw(e.target.value)} />
+			<SearchResult query={deferredKw} />
+		</>
+	);
+};
+
+const SearchResult = React.memo((props: { query: string }) => {
+	if (!props.query) return;
+	const items = Array(20000)
+		.fill(props.query)
+		.map((item, i) => <p key={i}>{item}</p>);
+	return items;
+});
+
+export default Defer;
+```
+
+结合`React.memo`，文本框输入时延迟加载，减少重新渲染

@@ -186,7 +186,7 @@ function escape(str) {
 >
 只允许加载本站资源：Content-Security-Policy: default-src 'self'
 >
-> - 设置 meta 标签的方式
+> - 设置 meta 标签的方式，例如：<meta http-equiv="Content-Security-Policy">
 
 ![http24.png](https://i.imgtg.com/2023/03/01/VZBhF.png)
 
