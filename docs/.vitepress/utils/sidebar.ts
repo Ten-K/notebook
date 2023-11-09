@@ -78,7 +78,10 @@ export const sidebar = {
 			text: "我的文章",
 			collapsible: true,
 			link: "/article/article/搭建npm私服",
-			items: [{ text: "搭建npm私服", link: "/article/article/搭建npm私服" }]
+			items: [
+				{ text: "搭建npm私服", link: "/article/article/搭建npm私服" },
+				{ text: "nuxt3中使用高德地图", link: "/article/article/nuxt3中使用高德地图" }
+			]
 		}
 	]
 };

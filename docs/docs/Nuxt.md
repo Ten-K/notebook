@@ -1,4 +1,4 @@
-# Nuxt实战bilibili移动端项目
+# Nuxt
 
 ## 安装
 
@@ -7,7 +7,7 @@
 :::
 
 ```bash
-pnpm dlx nuxi@latest init nuxt-bilibili-demo
+pnpm dlx nuxi@latest init nuxt-demo
 ```
 
 ## 问题
