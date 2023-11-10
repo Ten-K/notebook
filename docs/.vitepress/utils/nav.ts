@@ -1,6 +1,6 @@
 /**
  * 顶部导航栏模块
- * 详细参考：https://vitepress.vuejs.org/guide/theme-nav
+ * 详细参考：https://vitepress.dev/reference/default-theme-nav
  */
 export const nav = [
   {

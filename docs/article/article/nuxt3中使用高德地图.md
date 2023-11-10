@@ -50,12 +50,14 @@ onMounted(() => {
 		position: [114.1693611, 22.3193039], // 位置
 		icon: "//vdata.amap.com/icons/b18/1/2.png"
 	});
+  
+  // 缩放工具条实例化
 	const toolbar = new AMap.ToolBar({
 		position: {
 			top: "150px",
 			right: "40px"
 		}
-	}); // 缩放工具条实例化
+	});
 	const overView = new AMap.HawkEye({
 		visible: true
 	});

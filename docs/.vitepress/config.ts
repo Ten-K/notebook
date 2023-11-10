@@ -9,18 +9,32 @@ import { mdPlugin } from "./config/plugins";
 
 const config = defineConfig({
 	title: "一万随手记",
+	description: "记录前端学习笔记",
 	lastUpdated: true,
 
 	themeConfig: {
-		lastUpdatedText: "最后更新时间",
+		nav,
+		sidebar,
+		footer: {
+			message: "Released under the MIT License.",
+			copyright: "Copyright © 2023-present Ten-K"
+		},
+		editLink: {
+			pattern: "https://github.com/Ten-K/notebook/tree/main/docs/:path",
+			text: "在GitHub上编辑此页面"
+		},
+		search: {
+			provider: "local"
+		},
+		lastUpdated: {
+			text: "最后更新时间"
+		},
 		socialLinks: [
 			{
 				icon: "github",
 				link: "https://github.com/Ten-K/notebook"
 			}
-		],
-		nav,
-		sidebar
+		]
 	},
 	markdown: {
 		config: (md) => mdPlugin(md)
