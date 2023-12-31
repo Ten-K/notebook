@@ -8,14 +8,14 @@
   "type": "module",
   "license": "MIT",
   "devDependencies": {
-    "@pureadmin/utils": "^1.9.10",
+    "@pureadmin/utils": "^1.18.0",
     "markdown-it": "^13.0.2",
-    "naive-ui": "^2.35.0",
-    "sass": "^1.69.5",
-    "unocss": "^0.58.0",
+    "naive-ui": "^2.36.0",
+    "sass": "^1.69.6",
+    "unocss": "^0.58.2",
     "vite": "4.4.11",
-    "vitepress": "1.0.0-rc.25",
-    "vue": "^3.3.8"
+    "vitepress": "1.0.0-rc.34",
+    "vue": "^3.4.3"
   },
   "engines": {
     "node": "^18.18.0 || >=20.0.0",
