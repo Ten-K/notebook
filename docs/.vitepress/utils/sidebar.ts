@@ -64,7 +64,7 @@ export const sidebar = {
 		{
 			text: "年度归档",
 			collapsed: true,
-			items: [{ text: "2023", link: "/article/archives/2023" }]
+			items: [{ text: "2024", link: "/article/archives/2024" }]
 		},
 		{
 			text: "我的文章",

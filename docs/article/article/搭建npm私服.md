@@ -6,6 +6,7 @@
 
 [nexus下载地址](https://help.sonatype.com/repomanager3/product-information/download/download-archives---repository-manager-3)
 
+<!-- [![Ovm5yv.png](https://ooo.0x0.ooo/2024/01/29/Ovm5yv.png)](https://img.tg/image/Ovm5yv) -->
 ![下载图片指引](https://i.imgtg.com/2023/03/07/YZhMx.png)
 
 将下载的tar.gz文件上传至服务器，然后解压文件
