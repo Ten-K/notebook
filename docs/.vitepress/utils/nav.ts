@@ -11,6 +11,6 @@ export const nav = [
   {
     text: '随笔',
     activeMatch: '/article/',
-    link: '/article/archives/2023'
+    link: '/article/archives/2024'
   }
 ]
