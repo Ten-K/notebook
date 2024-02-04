@@ -10,12 +10,12 @@
   "devDependencies": {
     "@pureadmin/utils": "^1.18.0",
     "markdown-it": "^13.0.2",
-    "naive-ui": "^2.36.0",
-    "sass": "^1.69.6",
-    "unocss": "^0.58.2",
+    "naive-ui": "^2.37.3",
+    "sass": "^1.70.0",
+    "unocss": "^0.58.4",
     "vite": "4.4.11",
     "vitepress": "1.0.0-rc.34",
-    "vue": "^3.4.3"
+    "vue": "^3.4.15"
   },
   "engines": {
     "node": "^18.18.0 || >=20.0.0",
