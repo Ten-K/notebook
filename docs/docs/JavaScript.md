@@ -36,7 +36,7 @@ console.log(typeof function () {}); // "function"
 
 ## 面试可能遇到的问题
 
-1. **typeof 的原理**
+1. **typeof 的原理**  
 原理：不同对象在底层都表示为二进制，在Js中二进制前三位存储其类型信息。
 000：对象，  010浮点数，  100：字符串，  110布尔， 1整数
 typeof null 的结果为object，
@@ -44,7 +44,7 @@ typeof null 的结果为object，
 null的二进制表示全为0，自然前三位也为0，
 所以执行typeof null 时会返回 object
 
-2. **instanceof 的原理**
+2. **instanceof 的原理**  
 原理：检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。
 
 ```javascript
