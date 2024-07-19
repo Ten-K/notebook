@@ -5,7 +5,7 @@ hero:
   text: 记录学习过程中的知识点
   tagline: 总结包含了vue3, http, shell等多种知识点
   image:
-    src: ./images/logo.webp
+    src: ./images/logo.jpg
     alt: "一万随手记"
   actions:
     - theme: brand
