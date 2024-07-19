@@ -10,7 +10,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /docs/HTML
+      link: /docs/JavaScript
     - theme: alt
       text: 文档仓库
       link: https://github.com/Ten-K/notebook

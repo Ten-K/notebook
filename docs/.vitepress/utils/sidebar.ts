@@ -9,8 +9,8 @@ export const sidebar = {
 			text: "前端基础",
 			collapsed: true,
 			items: [
-				{ text: "HTML", link: "/docs/HTML" },
-				{ text: "CSS", link: "/docs/CSS" },
+				// { text: "HTML", link: "/docs/HTML" },
+				// { text: "CSS", link: "/docs/CSS" },
 				{ text: "JavaScript", link: "/docs/JavaScript" }
 			]
 		},

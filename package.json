@@ -10,15 +10,15 @@
   "devDependencies": {
     "@pureadmin/utils": "^1.18.0",
     "markdown-it": "^13.0.2",
-    "naive-ui": "^2.37.3",
-    "sass": "^1.70.0",
-    "unocss": "^0.58.5",
+    "naive-ui": "^2.39.0",
+    "sass": "^1.77.8",
+    "unocss": "^0.58.9",
     "vite": "4.4.11",
     "vitepress": "1.0.0-rc.34",
-    "vue": "^3.4.15"
+    "vue": "^3.4.33"
   },
   "engines": {
-    "node": "^18.18.0 || >=20.0.0",
-    "pnpm": ">=8.6.10"
+    "node": "20.13.1",
+    "pnpm": "9.4.0"
   }
 }
