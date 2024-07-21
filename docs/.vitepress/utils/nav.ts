@@ -6,7 +6,7 @@ export const nav = [
   {
     text: '文档',
     activeMatch: '/docs/',
-    link: '/docs/HTML'
+    link: '/docs/JavaScript'
   },
   {
     text: '随笔',
