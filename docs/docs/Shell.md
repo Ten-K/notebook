@@ -12,9 +12,7 @@ echo "Hello World !"
 `echo` 命令用于向窗口输出文本。
 [Shell教程](https://www.runoob.com/linux/linux-shell.html)
 
-## 变量
-
-### 定义变量
+## 定义变量
 
 ::: danger 注意
 变量名和等号之间不能有空格
@@ -28,7 +26,7 @@ your_name="runoob.com"
 array_name=(value0 value1 value2 value3)
 ```
 
-### 使用变量
+## 使用变量
 
 ```bash
 your_name="runoob.com"
@@ -75,9 +73,7 @@ echo "第三个参数为：$3";
 # 第三个参数为：3
 ```
 
-## 流程控制
-
-### if 条件判断
+## if 条件判断
 
 if else 的 [...] 判断语句中大于使用 -gt，小于使用 -lt。
 
