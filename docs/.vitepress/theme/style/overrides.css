@@ -1,0 +1,183 @@
+/**
+ * Colors
+ * -------------------------------------------------------------------------- */
+
+:root {
+	--vp-c-brand: #646cff;
+	--vp-c-brand-light: #747bff;
+	--vp-c-brand-lighter: #9499ff;
+	--vp-c-brand-lightest: #bcc0ff;
+	--vp-c-brand-dark: #535bf2;
+	--vp-c-brand-darker: #454ce1;
+	--vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+	--vp-button-brand-border: var(--vp-c-brand-light);
+	--vp-button-brand-text: var(--vp-c-white);
+	--vp-button-brand-bg: var(--vp-c-brand);
+	--vp-button-brand-hover-border: var(--vp-c-brand-light);
+	--vp-button-brand-hover-text: var(--vp-c-white);
+	--vp-button-brand-hover-bg: var(--vp-c-brand-light);
+	--vp-button-brand-active-border: var(--vp-c-brand-light);
+	--vp-button-brand-active-text: var(--vp-c-white);
+	--vp-button-brand-active-bg: var(--vp-button-brand-bg);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+	--vp-home-hero-name-color: transparent;
+	--vp-home-hero-name-background: -webkit-linear-gradient(
+		120deg,
+		#bd34fe 30%,
+		#41d1ff
+	);
+}
+
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+
+:root {
+	--vp-custom-block-tip-border: var(--vp-c-brand);
+	--vp-custom-block-tip-text: var(--vp-c-brand-darker);
+	--vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+}
+
+.dark {
+	--vp-custom-block-tip-border: var(--vp-c-brand);
+	--vp-custom-block-tip-text: var(--vp-c-brand-lightest);
+	--vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+}
+
+/**
+ * VitePress: Custom fix
+ * -------------------------------------------------------------------------- */
+
+/*
+  Use lighter colors for links in dark mode for a11y.
+  Also specify some classes twice to have higher specificity
+  over scoped class data attribute.
+*/
+.dark .vp-doc a,
+.dark .vp-doc a > code,
+.dark .VPNavBarMenuLink.VPNavBarMenuLink:hover,
+.dark .VPNavBarMenuLink.VPNavBarMenuLink.active,
+.dark .link.link:hover,
+.dark .link.link.active,
+.dark .edit-link-button.edit-link-button,
+.dark .pager-link .title {
+	color: var(--vp-c-brand-lighter);
+}
+
+.dark .vp-doc a:hover,
+.dark .vp-doc a > code:hover {
+	color: var(--vp-c-brand-lightest);
+	opacity: 1;
+}
+
+/* Transition by color instead of opacity */
+.dark .vp-doc .custom-block a {
+	transition: color 0.25s;
+}
+
+.vp-sponsor.aside .vp-sponsor-grid.mini .vp-sponsor-grid-image {
+	max-width: 124px;
+}
+
+.VPImage.logo {
+	margin-right: 0;
+}
+
+.VPImage.image-src {
+	max-width: 460px;
+}
+
+@media screen and (max-width: 640px) {
+	.VPImage.image-src {
+		max-width: 320px !important;
+	}
+}
+
+.vp-doc h1 {
+	margin: 0 0 1rem;
+}
+
+.vp-doc h2 {
+	margin: 12px 0 8px 0;
+	border-top: none;
+	font-size: 22px;
+}
+
+.vp-doc h2 + div[class*="language-"] {
+	margin-top: 10px;
+}
+
+.vp-doc h3 + div[class*="language-"] {
+	margin-top: 10px;
+}
+
+.aside {
+	width: 220px !important;
+}
+
+.vp-doc .container,
+.vp-doc .content {
+	max-width: 900px !important;
+}
+
+.VPContentDoc .container {
+	place-content: space-around !important;
+}
+
+.outline-marker {
+	width: 4px !important;
+	height: 20px !important;
+	border-radius: 4px !important;
+	left: 5px !important;
+}
+
+.VPDocAsideOutline .content {
+	border-left: none !important;
+}
+
+.VPDocAsideOutline .outline-link.active {
+	color: var(--vp-c-brand-1) !important;
+}
+
+.vp-doc p,
+.vp-doc summary {
+	opacity: 0.8 !important;
+}
+
+.custom-block.tip {
+	color: var(--vp-c-brand);
+}
+
+/* 覆盖naive-ui样式 */
+.n-gradient-text {
+	white-space: inherit;
+}
+
+.VPSidebarItem.level-1.is-link {
+	padding: 0 10px;
+	border-radius: 8px;
+}
+.VPSidebarItem.level-1.is-link.is-active.has-active {
+	transition: all 0.3s ease;
+	background: rgba(100, 108, 255, 0.12);
+}
+.VPSidebarItem.level-1.is-link p {
+	transition: all 0.4s ease;
+}
+.VPSidebarItem.level-1.is-link.is-active.has-active p {
+	font-size: 0.95rem;
+	padding-left: 0.5rem;
+}

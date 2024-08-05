@@ -14,7 +14,7 @@ echo "Hello World !"
 
 ## 定义变量
 
-::: danger 注意
+::: tip 注意
 变量名和等号之间不能有空格
 :::
 
