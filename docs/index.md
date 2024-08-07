@@ -5,12 +5,12 @@ hero:
   text: 记录学习过程中的知识点
   tagline: 总结包含了vue3, http, shell等多种知识点
   image:
-    src: ./images/logo.webp
+    src: ./avatar.png
     alt: "一万随手记"
   actions:
     - theme: brand
       text: 快速开始
-      link: /docs/HTML
+      link: /docs/JavaScript
     - theme: alt
       text: 文档仓库
       link: https://github.com/Ten-K/notebook
@@ -26,12 +26,3 @@ features:
     title: 问题记录
     details: 记录开发过程中遇到的问题以及解决过程
 ---
-
-<Home />
-
-<script setup>
-/**
- * 这里路径 @theme 可以直接指向 .vitepress/theme 目录
- */
-// import Home from '@theme/Home.vue'
-</script>
