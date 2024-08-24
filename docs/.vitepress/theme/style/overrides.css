@@ -181,3 +181,12 @@
 	font-size: 0.95rem;
 	padding-left: 0.5rem;
 }
+
+// 修复图片被侧边栏遮挡的问题
+.medium-zoom-overlay {
+  z-index: 30;
+}
+
+.medium-zoom-image {
+  z-index: 9999 !important;
+}

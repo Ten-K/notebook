@@ -38,10 +38,16 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
 		}
 	);
 });
+
+const { Layout } = DefaultTheme
 </script>
 
 <template>
-	<DefaultTheme.Layout />
+	<Layout>
+    <template #layout-bottom>
+      <View />
+    </template>
+  </Layout>
 </template>
 
 <style>
