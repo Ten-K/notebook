@@ -1,6 +1,6 @@
 # Vue3快速上手
 
-<img src="https://user-images.githubusercontent.com/499550/93624428-53932780-f9ae-11ea-8d16-af949e16a09f.png" style="width:200px" />
+<img src="https://user-images.githubusercontent.com/499550/93624428-53932780-f9ae-11ea-8d16-af949e16a09f.png" alt="vue-logo" style="width:200px" />
 
 ## Vue3简介
 
@@ -70,7 +70,8 @@ vite官网：<https://vitejs.cn>
     - 真正的按需编译，不再等待整个应用编译完成。
 - 传统构建 与 vite构建对比图
 
-<img src="/images/bundle.svg" style="width:500px;height:280px;float:left" /><img src="/images/esm.svg" style="width:480px;height:280px" />
+<img src="/images/bundle.svg" alt="bundle" style="width:500px;height:280px;float:left" />
+<img src="/images/esm.svg" alt="esm" style="width:480px;height:280px" />
 
 ```bash
 ## 创建工程
@@ -409,7 +410,7 @@ pnpm run dev
 
 ### 5.provide 与 inject
 
-<img src="https://v3.cn.vuejs.org/images/components_provide.png" style="width:300px" />
+<img src="https://v3.cn.vuejs.org/images/components_provide.png" alt="components_provide" style="width:300px" />
 
 - 作用：实现<strong style="color:#DD5145">祖与后代组件间</strong>通信
 
@@ -454,10 +455,10 @@ pnpm run dev
 
   <div style="display: flex">
     <div style="width: 600px; height: 370px; overflow: hidden; margin-right: 20px">
-        <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f84e4e2c02424d9a99862ade0a2e4114~tplv-k3u1fbpfcp-watermark.image" style="width:600px;" />
+        <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f84e4e2c02424d9a99862ade0a2e4114~tplv-k3u1fbpfcp-watermark.image" alt="options" style="width:600px;" />
     </div>
     <div style="width: 300px; height: 370px; overflow: hidden;">
-        <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5ac7e20d1784887a826f6360768a368~tplv-k3u1fbpfcp-watermark.image" style="width:560px;" />
+        <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5ac7e20d1784887a826f6360768a368~tplv-k3u1fbpfcp-watermark.image" alt="options" style="width:560px;" />
     </div>
   </div>
 
@@ -467,10 +468,10 @@ pnpm run dev
 
   <div style="display: flex">
     <div style="width: 500px; height: 340px; overflow: hidden; margin-right: 20px">
-        <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc0be8211fc54b6c941c036791ba4efe~tplv-k3u1fbpfcp-watermark.image" style="height: 360px;"/>
+        <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc0be8211fc54b6c941c036791ba4efe~tplv-k3u1fbpfcp-watermark.image" alt="composition" style="height: 360px;"/>
     </div>
     <div style="width: 430px; height: 340px; overflow: hidden;">
-        <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6cc55165c0e34069a75fe36f8712eb80~tplv-k3u1fbpfcp-watermark.image" style="height: 360px;"/>
+        <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6cc55165c0e34069a75fe36f8712eb80~tplv-k3u1fbpfcp-watermark.image" alt="composition" style="height: 360px;"/>
     </div>
   </div>
 
@@ -625,4 +626,53 @@ pnpm run dev
 
   > 过滤器虽然这看起来很方便，但它需要一个自定义语法，打破大括号内表达式是 “只是 JavaScript” 的假设，这不仅有学习成本，而且有实现成本！建议用方法调用或计算属性去替换过滤器。
 
-- ......
+## 项目优化
+
+1. 区分`v-show`和`v-if`的使用场景：因为`v-show`只是控制元素的显示隐藏，而`v-if`则会销毁和重建组件，因此`v-show` 更适合于频繁切换的场景，而`v-if`更适合于组件的显隐。
+2. 使用**异步组件**减少进入页面时的组件加载次数。例如，一个页面有多个tab页，可以只加载当前显示的tab页，其他tab页通过异步组件的方式加载。
+3. 使用`keep-alive`组件缓存组件，避免每次切换组件时重新渲染。
+4. 减少不必要的响应式数据。
+5. 合理使用计算属性。
+
+### 页面加载优化
+
+#### 包体积与 Tree-shaking 优化
+
+- 在引入新的依赖项时要小心包体积膨胀！在现实的应用中，包体积膨胀通常因为无意识地引入了过重的依赖导致的。
+    - 减少引入的依赖包数量
+    - 尽量选择提供 ES 模块格式的依赖，它们对 tree-shaking 更友好。举例来说，选择 lodash-es 比 lodash 更好。
+
+#### 代码分割
+
+代码分割是指构建工具将构建后的 JavaScript 包拆分为多个较小的，可以按需或并行加载的文件。通过适当的代码分割，页面加载时需要的功能可以立即下载，而额外的块只在需要时才加载，从而提高性能。
+
+懒加载对于页面初次加载时的优化帮助极大，它帮助应用暂时略过了那些不是立即需要的功能。在 Vue 应用中，这可以与 Vue 的异步组件搭配使用，为组件树创建分离的代码块：
+
+```vue
+    import { defineAsyncComponent } from 'vue'
+
+    // 会为 Foo.vue 及其依赖创建单独的一个块
+    // 它只会按需加载
+    //（即该异步组件在页面中被渲染时）
+    const Foo = defineAsyncComponent(() => import('./Foo.vue'))
+```
+
+对于使用了 Vue Router 的应用，强烈建议使用异步组件作为路由组件。Vue Router 已经显性地支持了独立于 defineAsyncComponent 的懒加载。查看[懒加载路由](https://router.vuejs.org/zh/guide/advanced/lazy-loading.html)了解更多细节。
+
+### 更新优化
+
+#### Props 稳定性
+
+#### v-once
+
+#### v-memo
+
+#### 计算属性稳定性
+
+### 通用优化
+
+#### 大型虚拟列表
+
+#### 减少大型不可变数据的响应性开销
+
+#### 避免不必要的组件抽象
