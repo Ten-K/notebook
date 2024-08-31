@@ -11,10 +11,10 @@ const config = defineConfig({
 	title: "一万随手记",
 	description: "记录前端学习笔记",
 	lastUpdated: true,
-
 	themeConfig: {
 		nav,
 		sidebar,
+    outline: [2, 3],
 		footer: {
 			message: "Released under the MIT License.",
 			copyright: "Copyright © 2023-present Ten-K"

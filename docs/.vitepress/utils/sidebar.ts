@@ -10,7 +10,8 @@ export const sidebar = {
 			items: [
 				// { text: "HTML", link: "/docs/HTML" },
 				// { text: "CSS", link: "/docs/CSS" },
-				{ text: "JavaScript", link: "/docs/JavaScript" }
+				{ text: "JavaScript", link: "/docs/JavaScript" },
+        { text: "TypeScript", link: "/docs/TypeScript" }
 			]
 		},
 		{
