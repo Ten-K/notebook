@@ -47,7 +47,31 @@ showType(7);
 // Output: 7
 ```
 
-<!-- ### 泛型 -->
+### 泛型
+
+泛型指的是在定义**函数/接口/类型**时,不预先指定具体的类型,而是在使用的时候在指定类型限制的一种特性。
+
+```ts
+/** 联合类型中使用 */
+type UnionType<T> = T | string | number;
+
+const example1: UnionType<boolean> = true; // 正确
+// boolean | string | number;
+
+/** 接口中使用 */
+interface Container<T> {
+    data: T;
+}
+
+const container1: Container<number> = { data: 10 };
+// {
+//   data: number;
+// }
+const container2: Container<string> = { data: "hello" };
+// {
+//   data: string;
+// }
+```
 
 ## 内置工具
 
@@ -68,6 +92,14 @@ type PartialUser = Partial<User>;
 // }
 ```
 
+**实现：**
+
+```ts
+type Partial<T> = {
+    [P in keyof T]?: T[P];
+};
+```
+
 ### Required<Type\>
 
 接收一个对象类型，并将这个对象类型的所有属性都标记为必选的。
@@ -83,6 +115,14 @@ type RequiredUser = Required<User>;
 //   name: string;
 //   age: number;
 // }
+```
+
+**实现：**
+
+```ts
+type Required<T> = {
+    [P in keyof T]-?: T[P];
+};
 ```
 
 ### Readonly<Type\>
@@ -105,6 +145,14 @@ const readonlyUser: ReadonlyUser = {
 readonlyUser.name = "test2"; // Error
 ```
 
+**实现：**
+
+```ts
+type Readonly<T> = {
+    readonly [P in keyof T]: T[P];
+};
+```
+
 ### Pick<Type, Keys\>
 
 接收一个对象类型，以及一个字面量类型组成的联合类型，这个联合类型只能是由对象类型的属性名组成的。它会从传入的对象类型中，提取出指定的联合类型，并返回一个新的对象类型。
@@ -121,6 +169,14 @@ type PickUserName = Pick<User, "name">;
 // }
 ```
 
+**实现：**
+
+```ts
+type Pick<T, K extends keyof T> = {
+    [P in K]: T[P];
+};
+```
+
 ### Omit<Type, Keys\>
 
 与`Pick`相反，`Omit`会从传入的对象类型中，删除指定的联合类型，并返回一个新的对象类型。
@@ -135,6 +191,14 @@ type OmitUserName = Omit<User, "name">;
 // {
 //   age: number;
 // }
+```
+
+**实现：**
+
+```ts
+type Omit<T, K> = {
+    [P in Exclude<keyof T, K>]: T[P];
+};
 ```
 
 ### Record<Keys Type\>
@@ -156,6 +220,14 @@ const users: Record<UserName, UserInfo> = {
 };
 ```
 
+**实现：**
+
+```ts
+type Record<K, T> = {
+    [P in K]: T;
+};
+```
+
 ### Extract<Type, Union\>
 
 从`Type`联合类型中提取`Union`类型中也存在的部分，即交集
@@ -167,6 +239,12 @@ type RequiredUserProps = "name" | "age";
 type OptionalUserProps = Extract<UserProps, RequiredUserProps>;
 
 const optionalUserProps: OptionalUserProps = "name"; // "name" | "age"
+```
+
+**实现：**
+
+```ts
+type Extract<T, U> = T extends U ? T : never;
 ```
 
 ### Exclude<UnionType, ExcludedMembers\>
@@ -182,6 +260,12 @@ type OptionalUserProps = Exclude<UserProps, RequiredUserProps>;
 const optionalUserProps: OptionalUserProps = "email"; // "email"
 ```
 
+**实现：**
+
+```ts
+type Exclude<T, U> = T extends U ? never : T;
+```
+
 #### NonNullable<Type\>
 
 从`Type`中排除了所有的null、undefined的类型。
@@ -190,6 +274,12 @@ const optionalUserProps: OptionalUserProps = "email"; // "email"
 type T0 = NonNullable<string | number | undefined>; // string | number
 
 type T1 = NonNullable<string[] | null | undefined>; // string[]
+```
+
+**实现：**
+
+```ts
+type NonNullable<T> = T & {}; // 泛型参数T和{}的交集就默认排除了`null` 和 `undefined`
 ```
 
 ### Parameters<Type\>
@@ -204,6 +294,12 @@ type Add = typeof addHandler; // (x: number, y: number) => number;
 type AddParams = Parameters<Add>; // [number， number]
 ```
 
+**实现：**
+
+```ts
+type Parameters<T> = T extends (...args: infer Args) => any ? Args : never;
+```
+
 ### ReturnType<Type\>
 
 提取函数的返回值类型
@@ -214,4 +310,10 @@ const addHandler = (x: number, y: number) => x + y;
 type Add = typeof addHandler; // (x: number, y: number) => number;
 
 type AddParams = ReturnType<Add>; // number
+```
+
+**实现：**
+
+```ts
+type ReturnType<T> = T extends (...args: any) => infer R ? R : never;
 ```
