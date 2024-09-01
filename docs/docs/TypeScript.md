@@ -2,6 +2,49 @@
 
 ## 基础
 
+### any, unknown, never
+
+1. `any` 放弃类型检查。
+
+```ts
+let vAny: any = 'Hello World!' 
+vAny = 18 // ok! ts不会管any的类型检查
+vAny = true // ok! ts不会管any的类型检查           
+```
+
+2. `unknown` 允许你指定一个未知的类型。在后续的类型分流中，类型会逐渐收窄，最终得到一个更精确的类型。
+
+```ts
+/** 例1 */
+let vAny: any = 'Hello World!'
+let vUnknown: unknown = 'Hello World!'
+
+let vNumberForAny: number = vAny // ok! any可以直接赋值给其它任意类型
+let vNumberForUnknown: number = vUnknown // error! unknown不可以直接赋值给其它非any和unknown类型的对象
+
+/** 例2 */
+let vUnknown: unknown = 'abc'
+
+// 使用typeof推断出vUnknown的类型是string
+if (typeof vUnknown === 'string') {
+    vUnknown.toLocaleUpperCase() // ok! 因为能进入这个if条件体就证明了vUnknown是字符串类型！
+}
+
+let vNumberForUnknown: number = vUnknown as number // unknown类型一定要使用as关键字转换为number才可以赋值给number类型
+```
+
+3. `never` 表示一个不会出现的类型。例如一个函数抛出错误，那么never就是这个函数的返回值类型。
+
+```ts
+/** 例1 */
+function crashFunc(): never {
+  throw new Error('this function will crash')
+}
+
+/** 例2 */
+type Texample = string & number // never, 因为一个类型不可能即是string，也是number
+```
+
 ### 交叉类型
 
 交叉类型是一种将多种类型组合为一种类型的方法。 这意味着你可以将给定的类型 A 与类型 B 或更多类型合并，并获得具有所有属性的单个类型。
