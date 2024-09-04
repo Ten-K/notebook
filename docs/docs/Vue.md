@@ -676,3 +676,41 @@ pnpm run dev
 #### 减少大型不可变数据的响应性开销
 
 #### 避免不必要的组件抽象
+
+### vue3.5 新特性
+
+1. `defineProps`解构不再丢失响应性，同时支持默认值
+
+```ts
+// vue3.5前
+const props = withDefaults(defineProps<{
+  msg?: string
+}>(), {
+  msg: 'hello'
+})
+
+const { msg } = toRefs(props)
+
+// vue3.5后
+const { msg = 'hello' } = defineProps<{
+  msg?: string
+}>()
+```
+
+2. 新增`useTemplateRef`Api
+用于获取模板引用
+
+```ts
+// vue3.5前
+const buttonRef = ref<HTMLButtonElement>()
+
+<button ref="buttonRef"></button>
+
+// vue3.5后
+const buttonEl = useTemplateRef<HTMLButtonElement>('buttonRef')
+
+<button ref="buttonRef"></button>
+```
+
+3. 新增`useId`Api
+生成无论是在服务器端还是客户端都稳定的ID
