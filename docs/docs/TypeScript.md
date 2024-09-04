@@ -116,6 +116,21 @@ const container2: Container<string> = { data: "hello" };
 // }
 ```
 
+### infer 关键字
+
+在条件类型中提取类型的某一部分信息
+
+```ts
+// 提取函数的返回值类型
+type FunctionReturnType<T extends Func> = T extends (
+  ...args: any[]
+) => infer R
+  ? R
+  : never;
+```
+
+<!-- ### 协变与逆变 -->
+
 ## 内置工具
 
 ### Partial<Type\>
