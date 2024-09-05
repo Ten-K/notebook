@@ -716,3 +716,55 @@ const buttonEl = useTemplateRef<HTMLButtonElement>('buttonRef')
 3. 新增`useId`Api
 
 生成无论是在服务器端还是客户端都稳定的ID
+
+4. `watch`的`deep`选项支持传入数字
+
+在`3.5`之前，`watch`的`deep`选项只能是`boolean`类型，在3.5之后，`deep`选项可以传入`number`类型，用来指定监听深度。
+
+```ts
+// vue3.5前
+const obj = reactive({
+  a: 1,
+  b: {
+    c: 2,
+    d: {
+      e: 3
+    }
+  }
+})
+
+watch(()=> obj, () => {
+  console.log('监听到obj第二层的变化')
+}, {
+  deep: true
+})
+
+// 修改obj的第二层数据会触发watch回调
+obj.b.c = 4
+
+// 修改obj的第三层数据会触发watch回调
+obj.b.d.e = 4
+
+// vue3.5后
+const obj = reactive({
+  a: 1,
+  b: {
+    c: 2,
+    d: {
+      e: 3
+    }
+  }
+})
+
+watch(()=> obj, () => {
+  console.log('监听到obj第二层的变化')
+}, {
+  deep: 2
+})
+
+// 修改obj的第二层数据会触发watch回调
+obj.b.c = 4
+
+// 修改obj的第三层数据不会触发watch回调
+obj.b.d.e = 4
+```
